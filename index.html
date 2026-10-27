@@ -76,5 +76,29 @@ body{font-family:'IBM Plex Mono',monospace;background:#090b0a;letter-spacing:-.0
 <section class="section" id="contact"><div class="contact-panel"><div><div class="eyebrow" style="color:#d9f36a">Have a project or opportunity?</div><h2>Let’s build something useful.</h2><p style="margin-bottom:0;color:#d8e5dc">Open to connecting about data, software, and analytics opportunities.</p></div><a href="mailto:hridai5krishna@gmail.com">Email me ↗</a></div><div class="footer"><span>© 2026 Hridai Krishna Metla</span><span><a href="https://www.linkedin.com/in/hridai-krishna-metla" target="_blank" rel="noreferrer">LinkedIn</a> · <a href="https://github.com/chimpfreak" target="_blank" rel="noreferrer">GitHub</a> · <a href="mailto:hridai5krishna@gmail.com">Email</a></span></div></section>
 <script>
 document.querySelector('.terminal-content .tiny')?.remove();
+(() => {
+ const imageFiles = ['cs-degree.png','iot-circuit.png','Shrimp-dashboard.png','lavaindia.png','ue-dubai-logo.webp'];
+ const onGitHubPages = /(^|\.)github\.io$/i.test(window.location.hostname);
+ document.querySelectorAll('.roadmap-stop .story-media img').forEach((img, index) => {
+  const file = imageFiles[index];
+  if (!file) return;
+  img.removeAttribute('srcset');
+  img.style.width = 'auto';
+  img.style.height = 'auto';
+  img.style.maxWidth = '100%';
+  img.style.maxHeight = 'none';
+  img.style.objectFit = 'contain';
+  img.style.marginInline = 'auto';
+  img.onerror = () => {
+   img.onerror = null;
+   img.style.display = 'none';
+   const note = document.createElement('figcaption');
+   note.className = 'story-caption';
+   note.textContent = 'Image unavailable — please check the repository asset.';
+   img.parentElement?.appendChild(note);
+  };
+  img.src = onGitHubPages ? file : 'https://raw.githubusercontent.com/Chimpfreak/Chimpfreak.github.io/main/' + file;
+ });
+})();
 </script>
 </div></main></body></html>
