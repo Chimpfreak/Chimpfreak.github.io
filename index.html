@@ -101,4 +101,23 @@ document.querySelector('.terminal-content .tiny')?.remove();
  });
 })();
 </script>
+<style>
+.contact-details{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.contact-details a{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #35412f;color:var(--text);background:#101511;text-decoration:none;font-size:.78rem;overflow-wrap:anywhere;transition:border-color .2s ease,color .2s ease}
+.contact-details a:hover,.contact-details a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+.contact-details .contact-label{color:var(--muted);font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;display:block}
+.contact-details .contact-value{display:block;color:inherit}
+@media(max-width:600px){.contact-details{display:grid;grid-template-columns:1fr}.contact-details a{width:100%}}
+</style>
+<script>
+(()=>{
+ const panel=document.querySelector('#contact .contact-panel');
+ if(!panel || panel.nextElementSibling?.classList.contains('contact-details')) return;
+ const details=document.createElement('div');
+ details.className='contact-details';
+ details.setAttribute('aria-label','Contact details');
+ details.innerHTML='<a href="tel:+919290926629"><span><span class="contact-label">India</span><span class="contact-value">+91 92909 26629</span></span></a><a href="tel:+971581353219"><span><span class="contact-label">United Arab Emirates</span><span class="contact-value">+971 58 135 3219</span></span></a><a href="https://www.linkedin.com/in/hridai-krishna-metla" target="_blank" rel="noopener noreferrer"><span><span class="contact-label">LinkedIn</span><span class="contact-value">linkedin.com/in/hridai-krishna-metla ↗</span></span></a>';
+ panel.insertAdjacentElement('afterend',details);
+})();
+</script>
 </div></main></body></html>
